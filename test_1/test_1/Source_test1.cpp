@@ -1,4 +1,8 @@
+
+#define _USE_MATH_DEFINES
+
 #include <iostream>
+#include <cmath>
 #include "Shape.h"
 
 class Square: public IShape
@@ -42,13 +46,31 @@ public:
 	//стороны треугольника
 	double a, b, c;
 };
+class Circle : public IShape
+{
+public:
+	Circle() : r(1) {}
+	Circle(double value1) : r(value1) {}
+	virtual ~Circle() {}
+	//Конкретизация метода Area интерфейса IShape для класса Circle
+	virtual double Area() {
+	
+		return  M_PI*r*r;
+	}
+	//радиус круга
+	double r;
+};
 
 int main()
 {
 	Square fig1;
 	Rectangle fig2(2,5);
+	Triangle fig3;
+	Circle fig4(2.1);
 	std::cout << fig1.Area() << std::endl;
 	std::cout << fig2.Area() << std::endl;
+	std::cout << fig3.Area() << std::endl;
+	std::cout << fig4.Area() << std::endl;
 	system("pause");
 	return 0;
 }
