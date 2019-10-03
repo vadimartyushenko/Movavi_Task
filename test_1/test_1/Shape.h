@@ -3,6 +3,6 @@
 class IShape
 {
 public:
-	virtual double Area();
-	virtual ~IShape();
+	virtual double Area() = 0;
+	virtual ~IShape() {};
 };
