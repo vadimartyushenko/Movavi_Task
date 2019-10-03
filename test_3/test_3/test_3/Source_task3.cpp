@@ -20,18 +20,9 @@ int main()
 	auto last = std::unique(v.begin(), v.end());
 	//”дал€ет все последовательно повтор€ющиес€ элементы из диапазона [v.begin(), v.end()) и возвращает итератор на 
 	//элемент, следующий за последним элементом нового диапазона. 
-	// v сейчас содержит {1 2 3 4 5 6 7 x x x x x x}, где 'x' обозначает неопределЄнный элемент
+	// v сейчас содержит {1 2 3 4 5 6 7 11 x x x x x x}, где 'x' обозначает неопределЄнный элемент
 	v.erase(last, v.end());
 	for (int i : v)
 		std::cout << i << " ";
 	std::cout << std::endl;
-/*
-	// удаление последовательных повтор€ющихс€ пробелов
-	std::string s = "wanna go    to      space?";
-	auto end = std::unique(s.begin(), s.end(), [](char l, char r) {
-		return std::isspace(l) && std::isspace(r) && l == r;
-		});
-	// s сейчас содержит "wanna go to space?xxxxxxxx", где 'x' обозначает неопределЄнный символ
-	std::cout << std::string(s.begin(), end) << '\n';
-	*/
 }
