@@ -54,7 +54,6 @@ public:
 	virtual ~Circle() {}
 	//Конкретизация метода Area интерфейса IShape для класса Circle
 	virtual double Area() {
-	
 		return  M_PI*r*r;
 	}
 	//радиус круга
