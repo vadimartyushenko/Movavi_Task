@@ -6,19 +6,17 @@
 #include <ctime>
 #include <chrono>
 
-const int N = 1000000;
-
 int main()
 {
-	std::mt19937 gen{static_cast<unsigned>(std::time(nullptr))};// создание генератора псевдослучайных чисел
-	std::uniform_int_distribution<> dist(1, 10);//равномерное распределение в диапазоне [1, 10]
-	std::vector<int> v(N);
+	std::mt19937 gen{ static_cast<unsigned>(std::time(nullptr)) };// создание генератора псевдослучайных чисел
+	std::uniform_int_distribution<> dist(1, 100);//раномерное распределение в диапазоне [1, 10]
+	std::vector<int> v(10000000);
 	std::generate(v.begin(), v.end(), std::bind(dist, gen));//заполняем вектор 
 	std::cout << "Initial vector" << std::endl;
 	//for (int i : v) std::cout << i << " ";
-	std::cout << "\n-----------------------------------\n"; 
-	std::sort(v.begin(), v.end());
+	std::cout << "\n-----------------------------------\n";
 	auto start = std::chrono::high_resolution_clock::now();//замеряем время начала
+	std::sort(v.begin(), v.end());
 	v.erase(std::unique(v.begin(), v.end()), v.end());
 	auto end = std::chrono::high_resolution_clock::now();//замеряем время конца
 	std::cout << "Unique vector" << std::endl;
